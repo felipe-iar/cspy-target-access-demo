@@ -96,7 +96,7 @@ etc.
 >![image](https://user-images.githubusercontent.com/54443595/226172125-2981bb40-b564-44b8-b9a9-0861f20179d2.png)
 
 ### Running the itm-logger [example](examples#readme) program
-For executing the ITM Logger example, you will need to create a new C Project in IAR Embedded Workbench. The program should configure the hardware device target clocks. You will also need a debug probe. For the best experience, we recommend the [IAR I-jet](https://iar.com/ijet).
+For executing the ITM Logger example, you will need to create a new C Project in IAR Embedded Workbench. The program should configure the hardware device target clocks. You will also need a debug probe. This example requires the [IAR I-jet](https://iar.com/ijet).
 >__Note__ It is assumed that the hardware provides the **I**nstrumentation **T**race **M**acrocell (for example Cortex-M4). 
 
 1. Create/Generate a new C project that initializes the desired hardware target. If convenient, use the Code Generator provided by the silicon manufacturer.
