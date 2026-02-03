@@ -172,6 +172,28 @@ So that the `settings/target.Simulator.cspy.bat` script will execute `cspybat` w
 
 >__Note__ Use `Ctrl-C` to terminate the batch job. 
 
+
+## Known issues
+### Target Access Server not running
+If you get the error message `Error: Failed to read data from server. Error code was 10054` when executing the examples, make sure of the following:
+- Target Access Server is enabled (__Project__ → __Options__ (<kbd>Alt</kbd>+<kbd>F7</kbd>) → __Debugger__ → __Plugins__ and ☑️ __Target Access Server__),
+- The client is allowed to reach the host's port 9931/udp through the (e.g.,) Windows Firewall, and
+- C-SPY is running.
+
+An administrator console can be used with `netstat` before/after C-SPY starts to make sure that the Target Access Server is bound to the desired process:
+```console
+> netstat -abno | findstr "9931"
+  UDP     0.0.0.0:9931               *:*                 6336
+```
+In this example, 6336 is the PID in which port 9931/udp is bound to. The `tasklist` utility can then be used to filter by PID, revealing the port was indeed open by the IAR Embedded Workbench IDE:
+```console
+> tasklist /FI "PID eq 6336"
+
+Image Name               PID Session Name       Session#     Mem Usage
+==================== ======= ================ ========== =============
+IarIdePm.exe            6336 Console                   2     200,024 K  
+```
+
 ## Summary
 The demonstration applications have highlighted the powerful capabilities of the _IAR C-SPY Target Access_ plugin. From here, the potential to enhance your debugging efficiency and productivity is virtually limitless.
 
