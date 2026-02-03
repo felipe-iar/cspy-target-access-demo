@@ -2,7 +2,7 @@
  *
  * ITM Logger example (itm-logger.cpp)
  *
- * Copyright (c) 2023 IAR Systems AB.
+ * Copyright (c) 2023-2026 IAR Systems AB.
  *
  * See LICENSE for detailed license information.
  *
@@ -29,7 +29,7 @@ BOOL WINAPI ConsoleCloseHandler(DWORD dwCtrlType)
       return TRUE;
       
     case CTRL_CLOSE_EVENT:
-      std::cout << "TargetAccessClientITMdemo is shutting down" << 
+      std::cout << "Target Access Client is shutting down" <<
         std::setfill(' ') << std::setw(50) << "" << std::endl;
       ::TargetAccessShutdown();
       return TRUE;
@@ -70,14 +70,14 @@ void ReportError()
   
   errorMsg.resize(512);
   ::TargetAccessGetLastErrorMsg(const_cast<char *>(errorMsg.data()), errorMsg.size()); 
-  std::cout << "Error: " << errorMsg << std::endl; 
-  std::cout << "Client protocol version: " << ::TargetAccessGetClientProtocolVersion() << std::endl;
   std::cout << "Server protocol version: " << ::TargetAccessGetServerProtocolVersion() << std::endl;
+  std::cout << "Client protocol version: " << ::TargetAccessGetClientProtocolVersion() << std::endl;
+  std::cout << "Error: " << errorMsg << std::endl;
 }
 
 int RunItmLogging()
 {
-  if (::TargetAccessConfigureItmListener(0xffffffff, 1000) != 0)
+  if (::TargetAccessConfigureItmListener(0xfff00000, 1000) != 0)
     throw DemoException();
   
   if (::TargetAccessStartItmListener() != 0)

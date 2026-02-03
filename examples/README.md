@@ -51,7 +51,7 @@ The `TargetAccessConfigureItmListener()` API function
 int TargetAccessConfigureItmListener(uint32_t channels,
                                      uint32_t bufferCapacity)
 ```
-starts by setting the ITM channels bit mask to `0xffffffff` and the buffer capacity to `1000` events.
+sets the bit mask for which ITM channels the client application will be listening to (`0xfff00000`). It also sets the buffer capacity for `1000` events.
 
 Within the `while(1)` loop, the API function
 ```c
