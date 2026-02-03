@@ -2,7 +2,7 @@
  *
  * Memory writer example (mem-writer.cpp)
  *
- * Copyright (c) 2023 IAR Systems AB.
+ * Copyright (c) 2023-2026 IAR Systems AB.
  *
  * See LICENSE for detailed license information.
  *
@@ -55,6 +55,8 @@ void ReportError()
   
   errorMsg.resize(512);
   ::TargetAccessGetLastErrorMsg(const_cast<char *>(errorMsg.data()), errorMsg.size());
+  std::cout << "Server protocol version: " << ::TargetAccessGetServerProtocolVersion() << std::endl;
+  std::cout << "Client protocol version: " << ::TargetAccessGetClientProtocolVersion() << std::endl;
   std::cout << "Error: " << errorMsg << std::endl;
 }
 
