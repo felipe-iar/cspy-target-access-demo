@@ -34,9 +34,9 @@ Target Access Server ->> Target Access Client: Output/Result;
 
 This repository contains simple examples of client applications created with the Target Access SDK. They can connect to the server's UDP port, exposed by the Target Access Client DLL. 
 
-The Target Access Plugin SDK is installed at `C:/path/to/IAR/Embedded/Workbench/arm/src/TargetAccessPlugin`.
+The Target Access Plugin SDK is installed at `C:/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin` (replace `x.xx.x` with the actual product version).
 
-> __Note__ For more information on the SDK API details, refer to the _Getting Started Guide for the Target Access Plugin_, installed inside the _Target Access Plugin_ documentation folder (`C:/path/to/IAR/Embedded/Workbench/arm/src/TargetAccessPlugin/doc/TargetAccessPlugin.pdf`).
+> __Note__ For more information on the SDK API details, refer to the _Getting Started Guide for the Target Access Plugin_, installed inside the _Target Access Plugin_ documentation folder (`C:/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin/doc/TargetAccessPlugin.pdf`).
 
 
 ## Example programs
@@ -52,7 +52,7 @@ To build the example programs you will need:
 ```
 cd cspy-target-access-demo/examples
 mkdir build && cd build
-cmake .. -DTOOLKIT_DIR="C:/path/to/IAR/Embedded/Workbench/x.xx/arm"
+cmake .. -DTOOLKIT_DIR="C:/iar/ewarm-x.xx.x/arm"
 cmake --build . --config Release
 ```
 >__Note__ `TOOLKIT_DIR` must point to the `arm` subdirectory in the installation directory of the IAR Embedded Workbench.
