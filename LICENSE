@@ -5,7 +5,7 @@ example projects (unless another license is explicitly stated), the
 cstartup code, low_level_init.c, and some other low-level runtime 
 library files. 
 
-Copyright 2014-2023 IAR Systems AB.
+Copyright 2014-2026 IAR Systems AB.
 
 This source code is the property of IAR Systems. The source code may only
 be used together with the IAR Embedded Workbench. Redistribution and use 
