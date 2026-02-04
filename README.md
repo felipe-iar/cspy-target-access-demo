@@ -155,7 +155,7 @@ For executing the ITM Logger example, you will need to create a new C Project in
 >[d696e5913] ITM port 20: 0000008d (1 byte length)
 >[d6ac34750] ITM port 20: 00000015 (1 byte length)
 >[d6af3d321] ITM port 20: 00000001 (1 byte length)
->ITM Listener: on Channels: 0xffffffff Buffer capacity: 1000 Buffer size: 0  
+>ITM Listener: on Channels: 0xfff00000 Buffer capacity: 1000 Buffer size: 0  
 >```
 
 </details>
@@ -166,7 +166,7 @@ The Target Access Server plugin can also be used from the command line, with `cs
 
 Append the following parameter in the project's `settings/target.Simulator.general.xcl`:
 ```
---plugin="C:/path/to/IAR/Embedded/Workbench/common/plugins/TargetAccessServer/TargetAccessServer.dll"
+--plugin="C:/iar/ewarm-x.xx.x/common/plugins/TargetAccessServer/TargetAccessServer.dll"
 ```
 So that the `settings/target.Simulator.cspy.bat` script will execute `cspybat` with Target Access support.
 
