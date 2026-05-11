@@ -129,7 +129,7 @@ For executing the ITM Logger example, you will need to create a new C Project in
 8. Choose __Debug__ → __Go__ (<kbd>F5</kbd>).
 9. From your terminal, execute:
 ```
-itm-logger.exe
+itm-logger
 ```
 
 <details><summary>Output example (click to unfold):</summary>
