@@ -43,14 +43,14 @@ The Target Access Plugin SDK is installed at `/path/to/iar/ewarm-x.xx.x/arm/src/
 
 ### Prerequisites
 To build the example programs you will need:
-* Windows
+#### Windows
 - [IAR Embedded Workbench for Arm](https://iar.com/ewarm) V9 or later
 - [Microsoft Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later, installed for C++ Desktop Development
 
 1. Launch "Developer Command Prompt for VS 2022".
 2. Clone this repository.
 
-* Linux
+#### Linux
 - [IAR Embedded Workbench for Arm](https://iar.com/ewarm) V10 or later
 - [GNU C++ Compiler](https://gcc.gnu.org)
 
