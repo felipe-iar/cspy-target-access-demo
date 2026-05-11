@@ -66,14 +66,15 @@ int main(int argc, const char **argv)
   ::SetConsoleCtrlHandler(ConsoleCloseHandler, TRUE);
 #endif
 
-  char *portStr = nullptr;
-  size_t sz = 0;
-  int port = 9931; // server's default UDP port
-  if (_dupenv_s(&portStr, &sz, "TARGET_ACCESS_PORT") == 0 && portStr != nullptr)
-  {
-    port = std::stoi(portStr);
-    free(portStr);
-  }
+#if defined(_WIN32) || defined(_WIN64)
+  char* buf = nullptr;
+  size_t len;
+  _dupenv_s(&buf, &len, "TARGET_ACCESS_PORT");
+  int port = buf ? std::stoi(buf) : 9931; // TAP server default UDP port
+#else
+  const char* buf = getenv("TARGET_ACCESS_PORT");
+  int port = buf ? std::stoi(buf) : 9931; // TAP server default UDP port
+#endif
   try
   {
     if (argc < 3)
