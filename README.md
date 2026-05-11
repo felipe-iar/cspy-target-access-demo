@@ -34,30 +34,39 @@ Target Access Server ->> Target Access Client: Output/Result;
 
 This repository contains simple examples of client applications created with the Target Access SDK. They can connect to the server's UDP port, exposed by the Target Access Client DLL. 
 
-The Target Access Plugin SDK is installed at `C:/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin` (replace `x.xx.x` with the actual product version).
+The Target Access Plugin SDK is installed at `/path/to/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin` (replace `x.xx.x` with the actual product version).
 
-> __Note__ For more information on the SDK API details, refer to the _Getting Started Guide for the Target Access Plugin_, installed inside the _Target Access Plugin_ documentation folder (`C:/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin/doc/TargetAccessPlugin.pdf`).
+> __Note__ For more information on the SDK API details, refer to the _Getting Started Guide for the Target Access Plugin_, installed inside the _Target Access Plugin_ documentation folder (`/path/to/iar/ewarm-x.xx.x/arm/src/TargetAccessPlugin/doc/TargetAccessPlugin.pdf`).
 
 
 ## Example programs
 
-### Building the example programs
+### Prerequisites
 To build the example programs you will need:
+* Windows
 - [IAR Embedded Workbench for Arm](https://iar.com/ewarm) V9 or later
 - [Microsoft Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later, installed for C++ Desktop Development
 
 1. Launch "Developer Command Prompt for VS 2022".
 2. Clone this repository.
-3. Build the examples:
+
+* Linux
+- [IAR Embedded Workbench for Arm](https://iar.com/ewarm) V10 or later
+- [GNU C++ Compiler](https://gcc.gnu.org)
+
+1. Launch your terminal.
+2. Clone this repository.
+
+### Building
 ```
 cd cspy-target-access-demo/examples
 mkdir build && cd build
-cmake .. -DTOOLKIT_DIR="C:/iar/ewarm-x.xx.x/arm"
+cmake .. -DTOOLKIT_DIR="/path/to/iar/ewarm-x.xx.x/arm"
 cmake --build . --config Release
 ```
 >__Note__ `TOOLKIT_DIR` must point to the `arm` subdirectory in the installation directory of the IAR Embedded Workbench.
 
-Three example programs should be inside the __Release__ directory: `mem-reader.exe`, `mem-writer.exe` and `itm-logger.exe`. Also, a copy of the `TargetAccessClientSDK.dll` library was automatically placed together with these executables.
+Three example programs should be inside the __build__ directory: `mem-reader`, `mem-writer` and `itm-logger`. Also, the `TargetAccessClientSDK` shared library should be automatically copied to the same destination of these executables.
 
 >__Syntax notes__<br>
 >```
@@ -82,12 +91,12 @@ The memory access example programs can be used with the C-SPY Simulator (or adap
 > Sun Jan 01, 2023 12:00:00: TargetAccessPlugin: Started listening on port 9931
 > ```
 3. Choose __View__ → __Live watch__ and `<click to add>` `buffer` and `val`.
-4. In "Developer Command Prompt for VS 2022", execute:
+4. From your terminal, execute:
 ```
-.\Release\mem-reader 0x20001000
-.\Release\mem-reader 0x20002000
-.\Release\mem-writer 0x20001000 0x1000
-.\Release\mem-reader 0x20001000
+mem-reader 0x20001000
+mem-reader 0x20002000
+mem-writer 0x20001000 0x1000
+mem-reader 0x20001000
 etc.
 ```
 
@@ -118,9 +127,9 @@ For executing the ITM Logger example, you will need to create a new C Project in
 >__Note__ On Cortex-M devices, there are 32 ITM ports (0-31). ITM ports 0-19 are reserved by IAR Embedded Workbench. When creating client applications, make sure they only use the ITM ports 20-31. Using reserved ITM ports from external client applications may result in undefined behavior.
 
 8. Choose __Debug__ → __Go__ (<kbd>F5</kbd>).
-9. In the "Developer Command Prompt for VS 2022", execute:
+9. From your terminal, execute:
 ```
-.\Release\itm-logger.exe
+itm-logger.exe
 ```
 
 <details><summary>Output example (click to unfold):</summary>
@@ -161,12 +170,12 @@ For executing the ITM Logger example, you will need to create a new C Project in
 </details>
 
 
-## Target Access from `cspybat`
-The Target Access Server plugin can also be used from the command line, with `cspybat`. 
+## Target Access from `CSpyBat`
+The Target Access Server plugin can also be used from the command line, with `CSpyBat`. 
 
 Append the following parameter in the project's `settings/target.Simulator.general.xcl`:
 ```
---plugin="C:/iar/ewarm-x.xx.x/common/plugins/TargetAccessServer/TargetAccessServer.dll"
+--plugin="/iar/ewarm-x.xx.x/common/plugins/TargetAccessServer/TargetAccessServer.dll"
 ```
 So that the `settings/target.Simulator.cspy.bat` script will execute `cspybat` with Target Access support.
 
